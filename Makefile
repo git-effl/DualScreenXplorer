@@ -46,7 +46,7 @@ clean:
 	@echo clean ...
 	@rm -fr data/*.bin
 	@$(MAKE) -C libs/libfat4 clean
-	@rm -fr $(BUILD) $(TARGET).elf $(TARGET).nds $(TARGET).dsi $(TARGET).cia
+	@rm -fr $(BUILD) $(TARGET).elf $(TARGET).nds $(TARGET).dsi
 	@rm -fr $(TARGET).arm7.elf
 	@rm -fr $(TARGET).arm9.elf
 	@$(MAKE) -C bootloader clean
