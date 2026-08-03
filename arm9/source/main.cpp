@@ -110,7 +110,7 @@ int main(int argc, char **argv) {
 	
 	bool yHeld = false;
 
-	sprintf(titleName, "DualScreenXplorer %s");
+	sprintf(titleName, "DualScreenXplorer");
 
 	// initialize video mode
 	videoSetMode(MODE_5_2D);
