@@ -131,14 +131,14 @@ void dumpTitle(TitleInfo &title) {
 
 			// Ensure directories exist
 			char folderPath[16];
-			sprintf(folderPath, "%s:/gm9i", (sdMounted ? "sd" : "fat"));
+			sprintf(folderPath, "%s:/dsxpl", (sdMounted ? "sd" : "fat"));
 			if (access(folderPath, F_OK) != 0) {
 				font->clear(false);
 				font->print(firstCol, 0, false, STR_CREATING_DIRECTORY, alignStart);
 				font->update(false);
 				mkdir(folderPath, 0777);
 			}
-			sprintf(folderPath, "%s:/gm9i/out", (sdMounted ? "sd" : "fat"));
+			sprintf(folderPath, "%s:/dsxpl/out", (sdMounted ? "sd" : "fat"));
 			if (access(folderPath, F_OK) != 0) {
 				font->clear(false);
 				font->print(firstCol, 0, false, STR_CREATING_DIRECTORY, alignStart);
@@ -146,35 +146,35 @@ void dumpTitle(TitleInfo &title) {
 				mkdir(folderPath, 0777);
 			}
 
-			// Dump to /gm9i/out
+			// Dump to /dsxpl/out
 			char inpath[64], outpath[64];
 			if((selectedOption & TitleDumpOption::rom) && (allowedBitfield & TitleDumpOption::rom)) {
 				snprintf(inpath, sizeof(inpath), "%s/content/%02x%02x%02x%02x.app", title.path.c_str(), title.appVersion[0], title.appVersion[1], title.appVersion[2], title.appVersion[3]);
-				snprintf(outpath, sizeof(outpath), "%s:/gm9i/out/%s.nds", sdMounted ? "sd" : "fat", dumpName);
+				snprintf(outpath, sizeof(outpath), "%s:/dsxpl/out/%s.nds", sdMounted ? "sd" : "fat", dumpName);
 				fcopy(inpath, outpath);
 			}
 
 			if((selectedOption & TitleDumpOption::publicSave) && (allowedBitfield & TitleDumpOption::publicSave)) {
 				snprintf(inpath, sizeof(inpath), "%s/data/public.sav", title.path.c_str());
-				snprintf(outpath, sizeof(outpath), "%s:/gm9i/out/%s.pub", sdMounted ? "sd" : "fat", dumpName);
+				snprintf(outpath, sizeof(outpath), "%s:/dsxpl/out/%s.pub", sdMounted ? "sd" : "fat", dumpName);
 				fcopy(inpath, outpath);
 			}
 
 			if((selectedOption & TitleDumpOption::privateSave) && (allowedBitfield & TitleDumpOption::privateSave)) {
 				snprintf(inpath, sizeof(inpath), "%s/data/private.sav", title.path.c_str());
-				snprintf(outpath, sizeof(outpath), "%s:/gm9i/out/%s.prv", sdMounted ? "sd" : "fat", dumpName);
+				snprintf(outpath, sizeof(outpath), "%s:/dsxpl/out/%s.prv", sdMounted ? "sd" : "fat", dumpName);
 				fcopy(inpath, outpath);
 			}
 
 			if((selectedOption & TitleDumpOption::bannerSave) && (allowedBitfield & TitleDumpOption::bannerSave)) {
 				snprintf(inpath, sizeof(inpath), "%s/data/banner.sav", title.path.c_str());
-				snprintf(outpath, sizeof(outpath), "%s:/gm9i/out/%s.bnr", sdMounted ? "sd" : "fat", dumpName);
+				snprintf(outpath, sizeof(outpath), "%s:/dsxpl/out/%s.bnr", sdMounted ? "sd" : "fat", dumpName);
 				fcopy(inpath, outpath);
 			}
 
 			if((selectedOption & TitleDumpOption::tmd) && (allowedBitfield & TitleDumpOption::tmd)) {
 				snprintf(inpath, sizeof(inpath), "%s/content/title.tmd", title.path.c_str());
-				snprintf(outpath, sizeof(outpath), "%s:/gm9i/out/%s.tmd", sdMounted ? "sd" : "fat", dumpName);
+				snprintf(outpath, sizeof(outpath), "%s:/dsxpl/out/%s.tmd", sdMounted ? "sd" : "fat", dumpName);
 				fcopy(inpath, outpath);
 			}
 
