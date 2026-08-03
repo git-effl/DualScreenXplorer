@@ -34,18 +34,14 @@ jobs:
         id: build
         run: |
           make
-          chmod +x make_cia
-          ./make_cia --srl="GodMode9i.dsi" --id_0=$(git rev-parse --short=7 HEAD) --tikID=$(git rev-parse --short=16 HEAD)
           mkdir GodMode9i/
           cp GodMode9i.dsi GodMode9i/
           cp GodMode9i.nds GodMode9i/
-          cp GodMode9i.cia GodMode9i/
           7z a GodMode9i.7z GodMode9i/
 
           mkdir -p ~/artifacts
           cp GodMode9i.dsi ~/artifacts
           cp GodMode9i.nds ~/artifacts
-          cp GodMode9i.cia ~/artifacts
           cp GodMode9i.7z ~/artifacts
       - name: Publish build to GH Actions
         uses: actions/upload-artifact@v4
