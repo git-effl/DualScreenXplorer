@@ -21,7 +21,7 @@ all:	libfat4 bootloader bootstub $(TARGET).nds $(TARGET).dsi
 
 $(TARGET).nds:	arm7/$(TARGET).elf arm9/$(TARGET).elf
 	ndstool	-c $(TARGET).nds -7 arm7/$(TARGET).elf -9 arm9/$(TARGET).elf -d $(NITRODATA) \
-			-b icon.bmp "GodMode9i;Rocket Robz" \
+			-b icon.bmp "DualScreenXplorer;effL" \
 			-z 80040000
 
 $(TARGET).dsi:	arm7/$(TARGET).elf arm9/$(TARGET).elf
