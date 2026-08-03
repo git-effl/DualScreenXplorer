@@ -463,7 +463,7 @@ bool readFromGbaCart() {
 			decompress(compressedBuffer, finalBuffer, LZ77);
 
 			char destPath[256];
-			sprintf(destPath, "%s:/gm9i/out/%s.sav", (sdMounted ? "sd" : "fat"), fileName);
+			sprintf(destPath, "%s:/dsxpl/out/%s.sav", (sdMounted ? "sd" : "fat"), fileName);
 			FILE *destinationFile = fopen(destPath, "wb");
 			if(destinationFile) {
 				fwrite(finalBuffer, 1, size, destinationFile);
@@ -859,8 +859,8 @@ void ndsCardDump(void) {
 	// Ensure directories exist
 	if((dumpOption & allowedBitfield) != DumpOption::none && (sdMounted || flashcardMounted)) {
 		char folderPath[2][256];
-		sprintf(folderPath[0], "%s:/gm9i", (sdMounted ? "sd" : "fat"));
-		sprintf(folderPath[1], "%s:/gm9i/out", (sdMounted ? "sd" : "fat"));
+		sprintf(folderPath[0], "%s:/dsxpl", (sdMounted ? "sd" : "fat"));
+		sprintf(folderPath[1], "%s:/dsxpl/out", (sdMounted ? "sd" : "fat"));
 		if (access(folderPath[0], F_OK) != 0) {
 			font->clear(false);
 			font->print(firstCol, 0, false, STR_CREATING_DIRECTORY, alignStart);
@@ -902,7 +902,7 @@ void ndsCardDump(void) {
 		else {
 			// Dump!
 			char destPath[256];
-			sprintf(destPath, "%s:/gm9i/out/%s.nds", (sdMounted ? "sd" : "fat"), fileName);
+			sprintf(destPath, "%s:/dsxpl/out/%s.nds", (sdMounted ? "sd" : "fat"), fileName);
 			u32 currentSize = romSize;
 			FILE* destinationFile = fopen(destPath, "wb");
 			if (destinationFile) {
@@ -991,7 +991,7 @@ void ndsCardDump(void) {
 	// Dump save
 	if ((dumpOption & allowedBitfield) & DumpOption::save) {
 		char destPath[256];
-		sprintf(destPath, "%s:/gm9i/out/%s.sav", (sdMounted ? "sd" : "fat"), fileName);
+		sprintf(destPath, "%s:/dsxpl/out/%s.sav", (sdMounted ? "sd" : "fat"), fileName);
 		ndsCardSaveDump((sdMounted || flashcardMounted) ? destPath : fileName, selectedDrive);
 	}
 
@@ -1002,7 +1002,7 @@ void ndsCardDump(void) {
 		font->update(false);
 
 		char destPath[256];
-		sprintf(destPath, "%s:/gm9i/out/%s.txt", (sdMounted ? "sd" : "fat"), fileName);
+		sprintf(destPath, "%s:/dsxpl/out/%s.txt", (sdMounted ? "sd" : "fat"), fileName);
 		FILE* destinationFile = fopen(destPath, "wb");
 		if (destinationFile) {
 			fprintf(destinationFile,
@@ -1021,7 +1021,7 @@ void ndsCardDump(void) {
 
 			fprintf(destinationFile,
 				"Timestamp    : %s\n"
-				"GM9i Version : " VER_NUMBER "\n",
+				"dsxpl Version : " VER_NUMBER "\n",
 				RetTime("%Y-%m-%d %H:%M:%S").c_str());
 
 			fclose(destinationFile);
@@ -1208,8 +1208,8 @@ void gbaCartDump(void) {
 	// Ensure directories exist
 	if((dumpOption & allowedBitfield) != DumpOption::none) {
 		char folderPath[2][256];
-		sprintf(folderPath[0], "%s:/gm9i", (sdMounted ? "sd" : "fat"));
-		sprintf(folderPath[1], "%s:/gm9i/out", (sdMounted ? "sd" : "fat"));
+		sprintf(folderPath[0], "%s:/dsxpl", (sdMounted ? "sd" : "fat"));
+		sprintf(folderPath[1], "%s:/dsxpl/out", (sdMounted ? "sd" : "fat"));
 		if (access(folderPath[0], F_OK) != 0) {
 			font->clear(false);
 			font->print(firstCol, 0, false, STR_CREATING_DIRECTORY, alignStart);
@@ -1257,7 +1257,7 @@ void gbaCartDump(void) {
 		writeChange(rstCmd);
 
 		char destPath[256];
-		sprintf(destPath, "fat:/gm9i/out/%s.gba", fileName);
+		sprintf(destPath, "fat:/dsxpl/out/%s.gba", fileName);
 		FILE* destinationFile = fopen(destPath, "wb");
 		if (destinationFile) {
 			bool failed = false;
@@ -1331,7 +1331,7 @@ void gbaCartDump(void) {
 	// Dump save
 	if((dumpOption & allowedBitfield) & (DumpOption::save | DumpOption::saveNoRtc)) {
 		char destPath[256];
-		sprintf(destPath, "fat:/gm9i/out/%s.sav", fileName);
+		sprintf(destPath, "fat:/dsxpl/out/%s.sav", fileName);
 		gbaCartSaveDump(destPath, (dumpOption & allowedBitfield) & DumpOption::save);
 	}
 
@@ -1347,7 +1347,7 @@ void gbaCartDump(void) {
 		font->update(false);
 
 		char destPath[256];
-		sprintf(destPath, "%s:/gm9i/out/%s.txt", (sdMounted ? "sd" : "fat"), fileName);
+		sprintf(destPath, "%s:/dsxpl/out/%s.txt", (sdMounted ? "sd" : "fat"), fileName);
 		FILE* destinationFile = fopen(destPath, "wb");
 		if (destinationFile) {
 			fprintf(destinationFile,
@@ -1380,7 +1380,7 @@ void gbaCartDump(void) {
 
 			fprintf(destinationFile,
 				"Timestamp    : %s\n"
-				"GM9i Version : " VER_NUMBER "\n",
+				"dsxpl Version : " VER_NUMBER "\n",
 				RetTime("%Y-%m-%d %H:%M:%S").c_str());
 
 			fclose(destinationFile);
