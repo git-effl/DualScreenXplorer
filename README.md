@@ -1,6 +1,6 @@
 <p align="center">
 	<img src="https://github.com/DS-Homebrew/GodMode9i/raw/master/resources/logo2_small.png"><br>
-	<b>A full access file browser for the DS and DSi consoles :godmode:</b>
+	<b>A full access file browser for the DS and DSi consoles </b>
 	<br>
 	<a href="https://github.com/DS-Homebrew/GodMode9i/actions/workflows/building.yml">
 		<img src="https://github.com/DS-Homebrew/GodMode9i/actions/workflows/building.yml/badge.svg" height="20" alt="Build status on GitHub Actions">
