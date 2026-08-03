@@ -48,7 +48,7 @@ Config::Config() {
 		_languagePromptNeeded = false;
 	}
 
-	_fontPath = ini.GetString("GODMODE9I", "FONT_PATH", "sd:/gm9i/font.frf");
+	_fontPath = ini.GetString("GODMODE9I", "FONT_PATH", "sd:/dsxpl/font.frf");
 	_screenSwap = ini.GetInt("GODMODE9I", "SCREEN_SWAP", 0);
 
 	// Create the config file if it doesn't exist (but only when language is already known)

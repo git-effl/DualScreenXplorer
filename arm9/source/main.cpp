@@ -210,7 +210,7 @@ int main(int argc, char **argv) {
 	font->clear(false);
 	font->print(1, 1, false, titleName);
 	font->print(1, 2, false, "----------------------------------------");
-	font->print(1, 3, false, "https://github.com/DS-Homebrew/GodMode9i");
+	font->print(1, 3, false, "https://github.com/git-effl/DualScreenXplorer");
 	font->print(1, 5, false, "Booted from: " + bootSource);
 	font->print(1, 6, false, "Running on:  " + getConsoleModeStr());
 	font->print(-2, -2, false, "Mounting drive(s)...", Alignment::right);
