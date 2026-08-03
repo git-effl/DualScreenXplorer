@@ -233,10 +233,10 @@ int main(int argc, char **argv) {
 			nandMounted = nandMount();
 		//}
 		//is3DS = ((access("sd:/Nintendo 3DS", F_OK) == 0) && (*(vu32*)(0x0DFFFE0C) == 0x474D3969));
-		/*FILE* cidFile = fopen("sd:/gm9i/CID.bin", "wb");
+		/*FILE* cidFile = fopen("sd:/dsxpl/CID.bin", "wb");
 		fwrite((void*)0x2FFD7BC, 1, 16, cidFile);
 		fclose(cidFile);*/
-		/*FILE* cidFile = fopen("sd:/gm9i/ConsoleID.bin", "wb");
+		/*FILE* cidFile = fopen("sd:/dsxpl/ConsoleID.bin", "wb");
 		fwrite((void*)0x2FFFD00, 1, 8, cidFile);
 		fclose(cidFile);*/
 	} else if (REG_SCFG_EXT != 0) {
@@ -360,7 +360,7 @@ int main(int argc, char **argv) {
 
 	// Ensure gm9i folder exists
 	char folderPath[10];
-	sprintf(folderPath, "%s:/gm9i", (sdMounted ? "sd" : "fat"));
+	sprintf(folderPath, "%s:/dsxpl", (sdMounted ? "sd" : "fat"));
 	if ((sdMounted || flashcardMounted) && access(folderPath, F_OK) != 0)
 		mkdir(folderPath, 0777);
 
