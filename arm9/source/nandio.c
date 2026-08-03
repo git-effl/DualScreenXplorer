@@ -97,7 +97,7 @@ static void loadCid(bool isDSi) {
 	if(*(u32*)(0x2FFD7BC) != 0)
 		return;
 	if (!isDSi) {
-		FILE* cidFile = fopen("sd:/gm9/out/nand_cid.mem", "rb");
+		FILE* cidFile = fopen("sd:/dsxpl/out/nand_cid.mem", "rb");
 		if (cidFile) {
 			int read = fread((void*)0x2FFD7BC, 1, 16, cidFile);
 			fclose(cidFile);
