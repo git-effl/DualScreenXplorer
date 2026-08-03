@@ -209,11 +209,11 @@ FileOperation fileBrowse_A(DirEntry* entry, const char *curdir) {
 
 	operations.push_back(FileOperation::showInfo);
 
-	if (sdMounted && (strcmp(curdir, "sd:/gm9i/out/") != 0)) {
+	if (sdMounted && (strcmp(curdir, "sd:/dsxpl/out/") != 0)) {
 		operations.push_back(FileOperation::copySdOut);
 	}
 
-	if (flashcardMounted && (strcmp(curdir, "fat:/gm9i/out/") != 0)) {
+	if (flashcardMounted && (strcmp(curdir, "fat:/dsxpl/out/") != 0)) {
 		operations.push_back(FileOperation::copyFatOut);
 	}
 
@@ -319,18 +319,18 @@ FileOperation fileBrowse_A(DirEntry* entry, const char *curdir) {
 					gbaCartSaveRestore(entry->name.c_str());
 					break;
 				} case FileOperation::copySdOut: {
-					if (access("sd:/gm9i", F_OK) != 0) {
+					if (access("sd:/dsxpl", F_OK) != 0) {
 						font->print(optionsCol, optionOffset + y, false, STR_CREATING_DIRECTORY, alignStart);
 						font->update(false);
-						mkdir("sd:/gm9i", 0777);
+						mkdir("sd:/dsxpl", 0777);
 					}
-					if (access("sd:/gm9i/out", F_OK) != 0) {
+					if (access("sd:/dsxpl/out", F_OK) != 0) {
 						font->print(optionsCol, optionOffset + y, false, STR_CREATING_DIRECTORY, alignStart);
 						font->update(false);
-						mkdir("sd:/gm9i/out", 0777);
+						mkdir("sd:/dsxpl/out", 0777);
 					}
 					char destPath[256];
-					snprintf(destPath, sizeof(destPath), "sd:/gm9i/out/%s", entry->name.c_str());
+					snprintf(destPath, sizeof(destPath), "sd:/dsxpl/out/%s", entry->name.c_str());
 					font->print(optionsCol, optionOffset + y, false, STR_COPYING, alignStart);
 					font->update(false);
 					remove(destPath);
@@ -340,18 +340,18 @@ FileOperation fileBrowse_A(DirEntry* entry, const char *curdir) {
 					chdir(curdir); // For after copying a folder
 					break;
 				} case FileOperation::copyFatOut: {
-					if (access("fat:/gm9i", F_OK) != 0) {
+					if (access("fat:/dsxpl", F_OK) != 0) {
 						font->print(optionsCol, optionOffset + y, false, STR_CREATING_DIRECTORY, alignStart);
 						font->update(false);
-						mkdir("fat:/gm9i", 0777);
+						mkdir("fat:/dsxpl", 0777);
 					}
-					if (access("fat:/gm9i/out", F_OK) != 0) {
+					if (access("fat:/dsxpl/out", F_OK) != 0) {
 						font->print(optionsCol, optionOffset + y, false, STR_CREATING_DIRECTORY, alignStart);
 						font->update(false);
-						mkdir("fat:/gm9i/out", 0777);
+						mkdir("fat:/dsxpl/out", 0777);
 					}
 					char destPath[256];
-					snprintf(destPath, sizeof(destPath), "fat:/gm9i/out/%s", entry->name.c_str());
+					snprintf(destPath, sizeof(destPath), "fat:/dsxpl/out/%s", entry->name.c_str());
 					font->print(optionsCol, (optionOffset + y), false, STR_COPYING, alignStart);
 					font->update(false);
 					remove(destPath);
