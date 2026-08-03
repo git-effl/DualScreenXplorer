@@ -11,7 +11,7 @@ include $(DEVKITARM)/ds_rules
 
 export TARGET := GodMode9i
 
-export GAME_TITLE := $(TARGET)
+export GAME_TITLE := DualScreenXplorer
 
 export NITRODATA := nitrofiles
 
@@ -26,8 +26,8 @@ $(TARGET).nds:	arm7/$(TARGET).elf arm9/$(TARGET).elf
 
 $(TARGET).dsi:	arm7/$(TARGET).elf arm9/$(TARGET).elf
 	ndstool	-c $(TARGET).dsi -7 arm7/$(TARGET).elf -9 arm9/$(TARGET).elf -d $(NITRODATA) \
-			-b icon.bmp "GodMode9i;Rocket Robz" \
-			-g HGMA 00 "GODMODE9I" -z 80040000 -u 00030004
+			-b icon.bmp "DualScreenXplorer;effL" \
+			-g HGMA 00 "DSXPLR" -z 80040000 -u 00030004
 
 #---------------------------------------------------------------------------------
 arm7/$(TARGET).elf:
