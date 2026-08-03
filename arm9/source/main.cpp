@@ -160,7 +160,7 @@ int main(int argc, char **argv) {
 
 	font->print(1, 1, false, titleName);
 	font->print(1, 2, false, "----------------------------------------");
-	font->print(1, 3, false, "https://github.com/DS-Homebrew/GodMode9i");
+	font->print(1, 3, false, "https://github.com/git-effl/DualScreenXplorer");
 	font->print(1, 5, false, "Booted from: " + bootSource);
 
 	fifoWaitValue32(FIFO_USER_06);
